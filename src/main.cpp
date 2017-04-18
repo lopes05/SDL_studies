@@ -6,6 +6,8 @@ int main(int argc, char *args[]){
 
     g_game = new Game();
 
+    IMG_Init(IMG_INIT_PNG);
+    
     g_game->init("Capitulo 1", 100, 100, 640, 480, false);
 
     while(g_game->running()){
@@ -13,7 +15,7 @@ int main(int argc, char *args[]){
         g_game->update();
         g_game->render();
     }
-    IMG_Quit();
+    
     g_game->clean();
 
     return 0;

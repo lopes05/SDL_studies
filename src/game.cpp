@@ -4,7 +4,6 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 				bool fullscreen){
 
 	int flags = 0;
-	IMG_Init(IMG_INIT_PNG);
 	if(fullscreen)
 		flags = SDL_WINDOW_FULLSCREEN;
 
@@ -19,7 +18,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 
 			if(m_pRenderer){
 				std::cout << "Criação do renderer OK\n";
-				SDL_SetRenderDrawColor(m_pRenderer, 255,255,255,255);
+				SDL_SetRenderDrawColor(m_pRenderer, 255 , 0, 0, 255);
 			}
 			else{
 				std::cout << "renderer init fail\n";
@@ -37,20 +36,12 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 	}
 
 	std::cout << "Init OK!\n";
+	
+
+	if(!TheTextureManager::Instance()->load("assets/cat.png", "animate", m_pRenderer))
+		return false;
+
 	is_running = true;
-	SDL_Surface* pTempSurface = IMG_Load("assets/never.png");
-
-	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-
-	SDL_FreeSurface(pTempSurface);
-
-	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRect.w, 
-		&m_sourceRect.h);
-
-	m_destinationRect.x = m_sourceRect.x = 0;
-	m_destinationRect.y = m_sourceRect.y = 0;
-	m_destinationRect.w = m_sourceRect.w;
-	m_destinationRect.w = m_sourceRect.h;
 
 	return true;
 }
@@ -58,18 +49,20 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 
 void Game::render(){
 	SDL_RenderClear(m_pRenderer);
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destinationRect);
+	TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer);
+	TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 	SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update(){
-
+	m_currentFrame = int((SDL_GetTicks() / 100) % 6);
 }
 
 void Game::clean(){
 	std::cout << "cleaning game\n";
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
+	IMG_Quit();
 	SDL_Quit();
 }
 
