@@ -5,6 +5,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include <TextureManager.hpp>
+#include <GameObject.hpp>
+#include <Player.hpp>
 
 class Game{
 
@@ -12,6 +14,8 @@ class Game{
 		Game(){}
 		~Game(){}
 
+		GameObject m_go;
+		Player m_player;
 		bool init(const char *title, int xpos, int ypos, int width, int height,
 		 		 bool fullscreen);	
 
