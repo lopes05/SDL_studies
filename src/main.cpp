@@ -4,21 +4,28 @@ Game *g_game = 0;
 
 int main(int argc, char *args[]){
 
-    g_game = new Game();
+    std::cout << "Initializing game\n";
 
     IMG_Init(IMG_INIT_PNG);
     
-    g_game->init("Capitulo 1", 100, 100, 640, 480, false);
+    if(TheGame::Instance()->init("Capitulo 1", 100, 100, 640, 480, false)){
+        while(TheGame::Instance()->running()){
+            TheGame::Instance()->handleEvents();
+            TheGame::Instance()->update();
+            TheGame::Instance()->render();
 
-    while(g_game->running()){
-        g_game->handleEvents();
-        g_game->update();
-        g_game->render();
-
-        SDL_Delay(10);
-    }
+            SDL_Delay(10);
+        }
     
-    g_game->clean();
+        
+    }
+    else{
+        std::cout << "Fail to init game -- " << SDL_GetError() << std::endl;
+        return -1;
+    }
+
+    std::cout << "Game closing\n"; 
+    TheGame::Instance()->clean();
 
     return 0;
 }

@@ -1,6 +1,7 @@
 #ifndef __TEXTUREMANAGER__
 #define __TEXTUREMANAGER__
 
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <map>
 #include <string>
@@ -8,7 +9,7 @@
 class TextureManager{
 
 	public:
-		static TextureManager *s_pInstance;
+		
 		static TextureManager* Instance(){
 			if(s_pInstance == 0){
 				s_pInstance = new TextureManager();
@@ -26,6 +27,7 @@ class TextureManager{
 
 	private:
 		TextureManager(){}
+		static TextureManager *s_pInstance;
 		std::map<std::string, SDL_Texture*> m_textureMap;
 };
 

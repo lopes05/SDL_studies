@@ -20,3 +20,7 @@ void GameObject::update(){
 	m_currentFrame = int(SDL_GetTicks()/100 % 6);
 	m_x += 1;
 }
+
+void GameObject::clean(){
+	// not yet
+}
