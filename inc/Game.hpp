@@ -9,6 +9,7 @@
 #include <Player.hpp>
 #include <Enemy.hpp>
 #include <vector>
+#include <InputHandler.hpp>
 
 class Game{
 
@@ -31,6 +32,7 @@ class Game{
 		void handleEvents();
 		void update();
 		void clean();
+		void quit();
 		SDL_Renderer *getRenderer() const {return m_pRenderer;}
 
 	bool running(){ return is_running; }
