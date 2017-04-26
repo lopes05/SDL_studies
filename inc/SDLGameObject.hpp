@@ -3,7 +3,7 @@
 
 #include <GameObject.hpp>
 
-class SDLGameObject : GameObject{
+class SDLGameObject : public GameObject{
 public:
 	SDLGameObject(const LoaderParams *pParams);
 
@@ -18,8 +18,7 @@ protected:
 	int m_height;
 	int m_currentRow;
 	int m_currentFrame;
-	std::string m_TextureID;
+	std::string m_textureID;
 };
-
 
 #endif
