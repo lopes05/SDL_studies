@@ -5,7 +5,7 @@ SDLGameObject::SDLGameObject(const LoaderParams *pParams) : GameObject(pParams){
 	m_x = pParams->getX();
 	m_y = pParams->getY();
 	m_width = pParams->getWidth();
-	m_height = pParams->getHeight();
+	m_height= pParams->getHeight();
 	m_textureID = pParams->getTextureID();
 
 	m_currentRow = 1;
