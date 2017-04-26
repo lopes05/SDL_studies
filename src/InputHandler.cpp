@@ -52,8 +52,9 @@ void InputHandler::clean(){
 
 void InputHandler::update(){
 	SDL_Event event;
+	m_keystates = SDL_GetKeyboardState(0);
 	while(SDL_PollEvent(&event)){
-
+		
 		switch(event.type){
 			case SDL_QUIT:
 				TheGame::Instance()->quit();

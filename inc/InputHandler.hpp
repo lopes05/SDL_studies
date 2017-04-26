@@ -49,7 +49,7 @@ class InputHandler{
 		void onMouseMove(SDL_Event& event);
 		void onMouseButtonDown(SDL_Event& event);
 		void onMouseButtonUp(SDL_Event& event);
-		
+
 		void onJoystickAxisMove(SDL_Event& event);
 		void onJoystickButtonDown(SDL_Event& event);
 		void onJoystickButtonUp(SDL_Event& event);
@@ -57,7 +57,7 @@ class InputHandler{
 		const int m_joystickDeadZone = 10000;
 		Vector2D* m_mousePosition;
 		std::vector<bool> m_mouseButtonStates;
-		Uint8* m_keystates;
+		const Uint8* m_keystates;
 		std::vector<std::vector<bool>> m_buttonStates;
 		std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
 		std::vector<SDL_Joystick*> m_joysticks;
