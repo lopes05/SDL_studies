@@ -10,6 +10,9 @@
 #include <Enemy.hpp>
 #include <vector>
 #include <InputHandler.hpp>
+#include <GameStateMachine.hpp>
+#include <PlayState.hpp>
+#include <MenuState.hpp>
 
 class Game{
 
@@ -40,7 +43,8 @@ class Game{
 	private:
 		Game(){}
 		static Game *s_pInstance;
-		
+		int m_currentState;
+		GameStateMachine *m_pGameStateMachine;
 		std::vector<GameObject*> m_gameObjects;
 		SDL_Window *m_pWindow;
 		SDL_Renderer *m_pRenderer;

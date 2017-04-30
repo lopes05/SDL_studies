@@ -39,6 +39,17 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 
 	std::cout << "Init OK!\n";
 
+	m_pGameStateMachine = new GameStateMachine();
+	m_pGameStateMachine->changeState(new MenuState());
+	//m_pMenuObj1 = new MenuObject();
+	//m_pMenuObj2 = new MenuObject();
+
+	m_currentState = MENU;
+
+	//m_pPlayer = new Player();
+	//m_pEnemy = new Enemy();
+
+
 	TheTextureManager::Instance()->load("assets/cat.png", "animate", m_pRenderer);
 	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
 	m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
@@ -53,6 +64,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 void Game::render(){
 	SDL_RenderClear(m_pRenderer);
 	draw();
+	m_pGameStateMachine->render();
 	SDL_RenderPresent(m_pRenderer);
 }
 
@@ -63,9 +75,7 @@ void Game::draw(){
 }
 
 void Game::update(){
-	for(GameObject *gameObject: m_gameObjects){
-		gameObject->update();
-	}
+	m_pGameStateMachine->update();
 }
 
 void Game::clean(){
@@ -79,6 +89,10 @@ void Game::clean(){
 
 void Game::handleEvents(){
 	TheInputHandler::Instance()->update();
+
+	if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)){
+		m_pGameStateMachine->changeState(new PlayState());
+	}
 }
 
 void Game::quit(){
