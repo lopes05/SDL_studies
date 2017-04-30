@@ -3,8 +3,7 @@
 
 #include <GameState.hpp>
 #include <SDLGameObject.hpp>
-#include <GameOverState.hpp>
-#include <PauseState.hpp>
+
 
 class PlayState : public GameState{
 	public:

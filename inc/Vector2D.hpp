@@ -59,11 +59,13 @@ class Vector2D{
 			return *this;
 		}
 
-		void normalize(){
+		Vector2D normalize(){
 			float l = length();
 			if(l > 0){
 				(*this) *= 1 / l;
 			}
+
+			return *this;
 		}
 
 	private:

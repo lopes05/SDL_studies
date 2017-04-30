@@ -2,6 +2,8 @@
 #include <Game.hpp>
 #include <TextureManager.hpp>
 #include <InputHandler.hpp>
+#include <PlayState.hpp>
+#include <AnimatedGraphic.hpp>
 
 const std::string GameOverState::s_gameOverID = "GAMEOVER";
 
@@ -45,7 +47,7 @@ bool GameOverState::onEnter(){
 	return true;
 }
 
-bool GameOverState onExit(){
+bool GameOverState::onExit(){
 	for(int i = 0; i < (int) m_gameObjects.size(); i++){
 		m_gameObjects[i]->clean();
 	}

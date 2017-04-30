@@ -3,8 +3,7 @@
 
 #include <SDLGameObject.hpp>
 #include <MenuState.hpp>
-#include <PlayState.hpp>
-#include <AnimatedGraphic.hpp>
+#include <GameState.hpp>
 
 class GameOverState : public GameState{
 	public:

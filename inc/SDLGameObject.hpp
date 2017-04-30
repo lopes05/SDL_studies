@@ -3,6 +3,7 @@
 
 #include <GameObject.hpp>
 #include <Vector2D.hpp>
+#include <LoaderParams.hpp>
 
 class SDLGameObject : public GameObject{
 public:
