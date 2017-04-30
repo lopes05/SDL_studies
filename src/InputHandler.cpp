@@ -78,7 +78,7 @@ void InputHandler::update(){
 				break;
 
 			case SDL_MOUSEMOTION:
-				//onMouseMove(event);
+				onMouseMove(event);
 				break;
 
 			case SDL_MOUSEBUTTONDOWN:
@@ -135,7 +135,7 @@ void InputHandler::onKeyUp(){
 
 bool InputHandler::isKeyDown(SDL_Scancode key){
 			if(m_keystates){
-				return m_keystates[key] == 1 ? true : false;
+				return m_keystates[key] == 1;
 			}
 			return false;
 }
