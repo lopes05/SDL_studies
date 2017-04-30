@@ -37,20 +37,27 @@ class Game{
 		void clean();
 		void quit();
 		SDL_Renderer *getRenderer() const {return m_pRenderer;}
+		GameStateMachine *getStateMachine(){return m_pGameStateMachine;}
 
-	bool running(){ return is_running; }
+		bool running(){ return is_running; }
 
 	private:
 		Game(){}
 		static Game *s_pInstance;
 		int m_currentState;
-		GameStateMachine *m_pGameStateMachine;
+		
 		std::vector<GameObject*> m_gameObjects;
 		SDL_Window *m_pWindow;
 		SDL_Renderer *m_pRenderer;
 
+		GameObject* m_go;
+		GameObject* m_player;
+		GameObject* m_enemy;
+		
 		int m_currentFrame;
 		bool is_running;
+
+		GameStateMachine *m_pGameStateMachine;
 };
 
 typedef Game TheGame;

@@ -8,8 +8,9 @@ void GameStateMachine::pushState(GameState *pState){
 void GameStateMachine::popState(){
 	if(!m_gameStates.empty()){
 		if(m_gameStates.back()->onExit()){
-			delete m_gameStates.back();
+			auto tmp = m_gameStates.back();
 			m_gameStates.pop_back();
+			delete tmp;
 		}
 	}
 }
@@ -20,10 +21,7 @@ void GameStateMachine::changeState(GameState *pState){
 			return;
 		}
 
-		if(m_gameStates.back()->onExit()){
-			delete m_gameStates.back();
-			m_gameStates.pop_back();
-		}
+		popState();
 	}
 
 	m_gameStates.push_back(pState);

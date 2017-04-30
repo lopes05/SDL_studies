@@ -4,6 +4,11 @@
 
 InputHandler* InputHandler::s_pInstance = 0;
 
+InputHandler::InputHandler(){
+	for(int i = 0; i < 3; ++i)
+		m_mouseButtonStates.push_back(false);
+}
+
 void InputHandler::initialiseJoysticks(){
 	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0){
 		SDL_InitSubSystem(SDL_INIT_JOYSTICK);
@@ -69,7 +74,7 @@ void InputHandler::update(){
 				break;
 
 			case SDL_JOYBUTTONUP:
-				onJoystickButtonDown(event);
+				onJoystickButtonUp(event);
 				break;
 
 			case SDL_MOUSEMOTION:
@@ -233,4 +238,8 @@ void InputHandler::onJoystickButtonDown(SDL_Event& event){
 void InputHandler::onJoystickButtonUp(SDL_Event& event){
 	int whichOne = event.jaxis.which;
 	m_buttonStates[whichOne][event.jbutton.button] = false;
+}
+
+void InputHandler::reset(){
+	
 }

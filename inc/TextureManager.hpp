@@ -27,7 +27,6 @@ class TextureManager{
 
 	private:
 		TextureManager(){}
-		~TextureManager(){}
 		static TextureManager *s_pInstance;
 		std::map<std::string, SDL_Texture*> m_textureMap;
 };

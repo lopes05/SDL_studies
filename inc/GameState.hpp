@@ -2,6 +2,9 @@
 #define __GAMESTATE__
 
 #include <string>
+#include <vector>
+#include <iostream>
+#include <SDLGameObject.hpp>
 
 enum game_states{
 	MENU = 0,
@@ -19,7 +22,7 @@ class GameState{
 		virtual bool onExit() = 0;
 		virtual std::string getStateID() const = 0;
 
-	private:
+		virtual ~GameState(){}
 
 };
 

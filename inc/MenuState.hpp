@@ -17,6 +17,8 @@ class MenuState : public GameState{
 	private:
 		std::vector<GameObject*> m_gameObjects;
 		static const std::string s_menuID;
+		static void s_menuToPlay();
+		static void s_exitFromMenu();
 };
 
 #endif

@@ -41,6 +41,8 @@ class InputHandler{
 
 		bool isKeyDown(SDL_Scancode key);
 
+		void reset();
+
 	private:
 
 		void onKeyDown();
@@ -55,18 +57,19 @@ class InputHandler{
 		void onJoystickButtonUp(SDL_Event& event);
 
 		const int m_joystickDeadZone = 10000;
+		const Uint8* m_keystates;
+
 		Vector2D* m_mousePosition;
 		std::vector<bool> m_mouseButtonStates;
-		const Uint8* m_keystates;
 		std::vector<std::vector<bool>> m_buttonStates;
 		std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
 		std::vector<SDL_Joystick*> m_joysticks;
+		
 		bool m_bJoysticksInitialised;
-		InputHandler() {
-			for(int i = 0; i < 3; ++i)
-				m_mouseButtonStates.push_back(false);
-		}
+		
+		InputHandler();
 		~InputHandler() {}
+		
 		static InputHandler *s_pInstance;
 
 };

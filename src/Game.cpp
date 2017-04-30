@@ -36,7 +36,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 		std::cout << "SDL init fail\n";
 		return false; 
 	}
-
+	TheInputHandler::Instance()->initialiseJoysticks();
 	std::cout << "Init OK!\n";
 
 	m_pGameStateMachine = new GameStateMachine();
@@ -50,9 +50,9 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 	//m_pEnemy = new Enemy();
 
 
-	TheTextureManager::Instance()->load("assets/cat.png", "animate", m_pRenderer);
-	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
+	//TheTextureManager::Instance()->load("assets/cat.png", "animate", m_pRenderer);
+	//m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+	//m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
 
 	TheInputHandler::Instance()->initialiseJoysticks();
 
@@ -63,8 +63,8 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 
 void Game::render(){
 	SDL_RenderClear(m_pRenderer);
-	draw();
 	m_pGameStateMachine->render();
+	draw();
 	SDL_RenderPresent(m_pRenderer);
 }
 
@@ -75,7 +75,11 @@ void Game::draw(){
 }
 
 void Game::update(){
+	m_currentFrame = int(SDL_GetTicks()/100 % 6);
 	m_pGameStateMachine->update();
+	for(GameObject* gameObject : m_gameObjects){
+		gameObject->update();
+	}
 }
 
 void Game::clean(){
