@@ -2,6 +2,7 @@
 #include <iostream>
 #include <TextureManager.hpp>
 #include <Game.hpp>
+#include <MenuButton.hpp>
 
 const std::string MenuState::s_menuID = "MENU";
 

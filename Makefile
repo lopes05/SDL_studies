@@ -5,7 +5,7 @@ OBJFOLDER := obj/
 DOCFOLDER := doc/
 
 CC := g++
-CFLAGS := -Wall
+CFLAGS := -Wall -Wno-reorder
 FLAGS := -std=c++11 -lSDL2 -lSDL2_image
 
 SRCFILES := $(wildcard $(SRCFOLDER)*.cpp)

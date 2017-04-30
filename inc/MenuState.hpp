@@ -4,7 +4,6 @@
 #include <GameState.hpp>
 #include <vector>
 #include <SDLGameObject.hpp>
-#include <MenuButton.hpp>
 
 class MenuState : public GameState{
 	public:

@@ -4,6 +4,7 @@
 #include <Game.hpp>
 #include <GameOverState.hpp>
 #include <PauseState.hpp>
+#include <MenuButton.hpp>
 
 const std::string PlayState::s_playID = "PLAY";
 

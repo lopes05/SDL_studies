@@ -4,8 +4,21 @@
 #include <InputHandler.hpp>
 #include <PlayState.hpp>
 #include <AnimatedGraphic.hpp>
+#include <MenuButton.hpp>
 
 const std::string GameOverState::s_gameOverID = "GAMEOVER";
+
+void GameOverState::update(){
+	for(int i = 0; i < (int) m_gameObjects.size(); ++i){
+		m_gameObjects[i]->update();
+	}
+}
+
+void GameOverState::render(){
+	for(int i = 0; i < (int) m_gameObjects.size(); ++i){
+		m_gameObjects[i]->draw();
+	}
+}
 
 void GameOverState::s_gameOverToMain(){
 	TheGame::Instance()->getStateMachine()->changeState(new MenuState());

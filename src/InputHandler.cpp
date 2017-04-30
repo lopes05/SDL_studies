@@ -82,12 +82,10 @@ void InputHandler::update(){
 				break;
 
 			case SDL_MOUSEBUTTONDOWN:
-				onMouseButtonDown(event);
-				break;
 
 			case SDL_MOUSEBUTTONUP:
-				onMouseButtonUp(event);
-				break;
+				onMouseButtonUpDown(event);
+			break;
 
 			case SDL_KEYDOWN:
 				onKeyDown();
@@ -142,32 +140,13 @@ bool InputHandler::isKeyDown(SDL_Scancode key){
 			return false;
 }
 
-void InputHandler::onMouseButtonDown(SDL_Event& event){
-	if(event.button.button == SDL_BUTTON_LEFT){
-		m_mouseButtonStates[LEFT] = true;
-	}
+void InputHandler::onMouseButtonUpDown(SDL_Event& event){
+	int buttonTypes[] {SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, SDL_BUTTON_RIGHT};
 
-	if(event.button.button == SDL_BUTTON_MIDDLE){
-		m_mouseButtonStates[MIDDLE] = true;
-	}
-
-	if(event.button.button == SDL_BUTTON_RIGHT){
-		m_mouseButtonStates[RIGHT] = true;
-	}
-}
-
-
-void InputHandler::onMouseButtonUp(SDL_Event& event){
-	if(event.button.button == SDL_BUTTON_LEFT){
-		m_mouseButtonStates[LEFT] = false;
-	}
-	
-	if(event.button.button == SDL_BUTTON_MIDDLE){
-		m_mouseButtonStates[MIDDLE] = false;
-	}
-
-	if(event.button.button == SDL_BUTTON_RIGHT){
-		m_mouseButtonStates[RIGHT] = false;
+	for(int i=0; i<3; i++){
+		if(event.button.button == buttonTypes[i]){
+			m_mouseButtonStates[i] = event.type == SDL_MOUSEBUTTONDOWN;
+		}
 	}
 }
 

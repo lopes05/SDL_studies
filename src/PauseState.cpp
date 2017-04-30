@@ -2,6 +2,7 @@
 #include <TextureManager.hpp>
 #include <InputHandler.hpp>
 #include <Game.hpp>
+#include <MenuButton.hpp>
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
