@@ -33,7 +33,7 @@ void GameOverState::s_restartPlay(){
 bool GameOverState::onEnter(){
 	StateParser stateParser;
 
-	stateParser.parseState("test.xml", s_gameOverID, &m_gameObjects, &m_textureIDList);
+	stateParser.parseState("xml/test.xml", s_gameOverID, &m_gameObjects, &m_textureIDList);
 
 	m_callbacks.push_back(0);
 	m_callbacks.push_back(s_gameOverToMain);
