@@ -40,19 +40,14 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 	std::cout << "Init OK!\n";
 
 	m_pGameStateMachine = new GameStateMachine();
-	m_pGameStateMachine->changeState(new MenuState());
-	//m_pMenuObj1 = new MenuObject();
-	//m_pMenuObj2 = new MenuObject();
+	m_pGameStateMachine->changeState(new MainMenuState());
+	
+	TheGameObjectFactory::Instance()->registerType("MenuButton", new MenuButtonCreator());
+	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
+	TheGameObjectFactory::Instance()->registerType("Enemy", new EnemyCreator());
+	TheGameObjectFactory::Instance()->registerType("AnimatedGraphic", new AnimatedGraphicCreator());
 
 	m_currentState = MENU;
-
-	//m_pPlayer = new Player();
-	//m_pEnemy = new Enemy();
-
-
-	//TheTextureManager::Instance()->load("assets/cat.png", "animate", m_pRenderer);
-	//m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
-	//m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
 
 	TheInputHandler::Instance()->initialiseJoysticks();
 

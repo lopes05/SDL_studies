@@ -3,11 +3,12 @@
 #include <InputHandler.hpp>
 #include <Game.hpp>
 #include <MenuButton.hpp>
+#include <StateParser.hpp>
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
 void PauseState::s_pauseToMain(){
-	TheGame::Instance()->getStateMachine()->changeState(new MenuState());
+	TheGame::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
 void PauseState::s_resumePlay(){
@@ -26,23 +27,25 @@ void PauseState::render(){
 	}
 }
 
+void PauseState::setCallbacks(const std::vector<Callback>& callbacks){
+	// go through the game objects
+	for(int i = 0; i < (int)m_gameObjects.size(); i++){
+		if(dynamic_cast<MenuButton*>(m_gameObjects[i])){
+			MenuButton* pButton = dynamic_cast<MenuButton*>(m_gameObjects[i]);
+			pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
+}
+
 bool PauseState::onEnter(){
-	if(!TheTextureManager::Instance()->load("assets/resumeButton.png", "resumebutton",
-		TheGame::Instance()->getRenderer())){
-		return false;
-	}
 
-	if(!TheTextureManager::Instance()->load("assets/menuButton.png", "mainbutton", 
-		TheGame::Instance()->getRenderer())){
-		return false;
-	}
+	StateParser stateParser;
+	stateParser.parseState("test.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_pauseToMain);
+	m_callbacks.push_back(s_resumePlay);
+	setCallbacks(m_callbacks);
 
-	GameObject* button1 = new MenuButton(new LoaderParams(200, 100, 200, 80, "mainbutton"),
-	 									s_pauseToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(200, 300,200, 80, "resumebutton"),
-										 s_resumePlay);
-	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
 	std::cout << "entering PauseState\n";
 	return true;
 }
@@ -53,8 +56,11 @@ bool PauseState::onExit(){
 	}
 
 	m_gameObjects.clear();
-	TheTextureManager::Instance()->clearFromTextureMap("resumebutton");
-	TheTextureManager::Instance()->clearFromTextureMap("mainbutton");
+
+	for(int i = 0; i < (int)m_textureIDList.size(); i++){
+		TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
+	}
+
 	// reset the mouse button states to false
 	TheInputHandler::Instance()->reset();
 	std::cout << "exiting PauseState\n";

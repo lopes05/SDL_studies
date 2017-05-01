@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<STATES>
+	<MENU>
+		<TEXTURES>
+			<texture filename="src/assets/play.png" ID="play"/>
+			<texture filename="src/assets/exit.png" ID="exit"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="100" y="100" width="400"
+				height="100" textureID="play" numFrames="3"
+				callbackID="1"/>
+				<object type="MenuButton" x="100" y="300" width="400"
+					height="100" textureID="exit" numFrames="3"
+					callbackID="2"/>
+				</OBJECTS>
+			</MENU>
+			<PLAY>
+				<TEXTURES>
+					<texture filename="helicopter.png" ID="helicopter"/>
+					<texture filename="helicopter.png" ID="helicopter2"/>
+				</TEXTURES>
+				<OBJECTS>
+					<object type="Player" x="500" y="100" width="128" height="55"
+					textureID="helicopter" numFrames="4"/>
+					<object type="Enemy" x="100" y="100" width="128" height="55"
+					textureID="helicopter2" numFrames="4"/>
+				</OBJECTS>
+			</PLAY>
+			<PAUSE>
+				<TEXTURES>
+					<texture filename="src/assets/resumeButton.png" ID="resumeButton"/>
+					<texture filename="src/assets/menuButton.png" ID="menuButton"/>
+				</TEXTURES>
+				<OBJECTS>
+					<object type="MenuButton" x="200" y="100" width="200"
+						height="80" textureID="menuButton" numFrames="0"
+						callbackID="1"/>
+					<object type="MenuButton" x="200" y="300" width="200"
+						height="80" textureID="resumeButton" numFrames="0"
+						callbackID="2"/>
+				</OBJECTS>
+			</PAUSE>
+			<GAMEOVER>
+				<TEXTURES>
+					<texture filename="src/assets/gameover.png" ID="gameover"/>
+					<texture filename="src/assets/menuButton.png" ID="menuButton"/>
+					<texture filename="src/assets/restart.png" ID="restart"/>
+				</TEXTURES>
+				<OBJECTS>
+					<object type="AnimatedGraphic" x="200" y="100" width="190"
+						height="30" textureID="gameover" numFrames="2"
+						animSpeed="2"/>
+					<object type="MenuButton" x="200" y="200" width="200"
+						height="80" textureID="menuButton" numFrames="0"
+						callbackID="1"/>
+					<object type="MenuButton" x="200" y="300" width="200"
+						height="80" textureID="restart" numFrames="0"
+						callbackID="2"/>
+				</OBJECTS>
+			</GAMEOVER>
+</STATES>

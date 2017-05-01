@@ -12,8 +12,6 @@ enum game_states{
 	GAMEOVER = 2
 };
 
-
-
 class GameState{
 	public:
 		virtual void update() = 0;
@@ -23,6 +21,9 @@ class GameState{
 		virtual std::string getStateID() const = 0;
 
 		virtual ~GameState(){}
+
+	protected:
+		std::vector<std::string> m_textureIDList;
 
 };
 

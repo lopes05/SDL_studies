@@ -4,7 +4,6 @@
 #include <GameState.hpp>
 #include <SDLGameObject.hpp>
 
-
 class PlayState : public GameState{
 	public:
 		virtual void update();

@@ -1,7 +1,7 @@
 #include <Player.hpp>
 #include <InputHandler.hpp>
 
-Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams){
+Player::Player() : SDLGameObject(){
 
 }
 
@@ -43,4 +43,8 @@ void Player::handleInput(){
 	m_velocity /= 50;
 
 
+}
+
+void Player::load(const LoaderParams *pParams){
+	SDLGameObject::load(pParams);
 }

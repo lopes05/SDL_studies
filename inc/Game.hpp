@@ -4,15 +4,24 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include <vector>
+
 #include <TextureManager.hpp>
 #include <GameObject.hpp>
-#include <Player.hpp>
-#include <Enemy.hpp>
-#include <vector>
 #include <InputHandler.hpp>
+
+#include <GameObjectFactory.hpp>
+
+#include <AnimatedGraphicCreator.hpp>
+#include <MenuButtonCreator.hpp>
+#include <PlayerCreator.hpp>
+#include <EnemyCreator.hpp>
+
 #include <GameStateMachine.hpp>
 #include <PlayState.hpp>
-#include <MenuState.hpp>
+#include <MainMenuState.hpp>
+#include <PauseState.hpp>
+#include <GameOverState.hpp>
 
 class Game{
 
