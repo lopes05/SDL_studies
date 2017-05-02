@@ -152,8 +152,8 @@ void InputHandler::onMouseButtonUpDown(SDL_Event& event){
 
 void InputHandler::onMouseMove(SDL_Event& event){
 	if(event.type == SDL_MOUSEMOTION){
-		m_mousePosition->setX(event.motion.x);
-		m_mousePosition->setY(event.motion.y);
+		m_mousePosition.setX(event.motion.x);
+		m_mousePosition.setY(event.motion.y);
 	}
 }
 

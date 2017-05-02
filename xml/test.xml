@@ -12,50 +12,49 @@
 				<object type="MenuButton" x="100" y="300" width="400"
 					height="100" textureID="exit" numFrames="3"
 					callbackID="2"/>
-				</OBJECTS>
-			</MENU>
-			<PLAY>
-				<TEXTURES>
-					<texture filename="assets/helicopter.png" ID="helicopter"/>
-					<texture filename="assets/helicopter.png" ID="helicopter2"/>
-				</TEXTURES>
-				<OBJECTS>
-					<object type="Player" x="500" y="100" width="128" height="55"
-					textureID="helicopter" numFrames="4"/>
-					<object type="Enemy" x="100" y="100" width="128" height="55"
-					textureID="helicopter2" numFrames="4"/>
-				</OBJECTS>
-			</PLAY>
-			<PAUSE>
-				<TEXTURES>
-					<texture filename="assets/resumeButton.png" ID="resumeButton"/>
-					<texture filename="assets/menuButton.png" ID="menuButton"/>
-				</TEXTURES>
-				<OBJECTS>
-					<object type="MenuButton" x="200" y="100" width="200"
-						height="80" textureID="menuButton" numFrames="0"
-						callbackID="1"/>
-					<object type="MenuButton" x="200" y="300" width="200"
-						height="80" textureID="resumeButton" numFrames="0"
-						callbackID="2"/>
-				</OBJECTS>
-			</PAUSE>
-			<GAMEOVER>
-				<TEXTURES>
-					<texture filename="assets/gameover.png" ID="gameover"/>
-					<texture filename="assets/menuButton.png" ID="menuButton"/>
-					<texture filename="assets/restart.png" ID="restart"/>
-				</TEXTURES>
-				<OBJECTS>
-					<object type="AnimatedGraphic" x="200" y="100" width="190"
-						height="30" textureID="gameover" numFrames="2"
-						animSpeed="2"/>
-					<object type="MenuButton" x="200" y="200" width="200"
-						height="80" textureID="menuButton" numFrames="0"
-						callbackID="1"/>
-					<object type="MenuButton" x="200" y="300" width="200"
-						height="80" textureID="restart" numFrames="0"
-						callbackID="2"/>
-				</OBJECTS>
-			</GAMEOVER>
+		</OBJECTS>
+	</MENU>
+	<PLAY>
+		<TEXTURES>
+			<texture filename="assets/helicopter.png" ID="helicopter"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="Player" x="500" y="100" width="128" height="55"
+			textureID="helicopter" numFrames="4"/>
+			<object type="Enemy" x="100" y="100" width="128" height="55"
+			textureID="helicopter" numFrames="4"/>
+		</OBJECTS>
+	</PLAY>
+	<PAUSE>
+		<TEXTURES>
+			<texture filename="assets/resumeButton.png" ID="resumeButton"/>
+			<texture filename="assets/menuButton.png" ID="menuButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="200" y="100" width="200"
+				height="80" textureID="menuButton" numFrames="0"
+				callbackID="1"/>
+			<object type="MenuButton" x="200" y="300" width="200"
+				height="80" textureID="resumeButton" numFrames="0"
+				callbackID="2"/>
+		</OBJECTS>
+	</PAUSE>
+	<GAMEOVER>
+		<TEXTURES>
+			<texture filename="assets/gameover.png" ID="gameover"/>
+			<texture filename="assets/menuButton.png" ID="menuButton"/>
+			<texture filename="assets/restart.png" ID="restart"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="AnimatedGraphic" x="200" y="100" width="190"
+				height="30" textureID="gameover" numFrames="2"
+				animSpeed="2"/>
+			<object type="MenuButton" x="200" y="200" width="200"
+				height="80" textureID="menuButton" numFrames="0"
+				callbackID="1"/>
+			<object type="MenuButton" x="200" y="300" width="200"
+				height="80" textureID="restart" numFrames="0"
+				callbackID="2"/>
+		</OBJECTS>
+	</GAMEOVER>
 </STATES>

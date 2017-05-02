@@ -38,8 +38,8 @@ void Player::handleInput(){
 		m_velocity.setY(boost * velocity.getY());
 	}
 
-	Vector2D *target = TheInputHandler::Instance()->getMousePosition();
-	m_velocity = *target - m_position;
+	Vector2D target = TheInputHandler::Instance()->getMousePosition();
+	m_velocity = target - m_position;
 	m_velocity /= 50;
 
 

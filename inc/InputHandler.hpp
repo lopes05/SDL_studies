@@ -35,7 +35,7 @@ class InputHandler{
 			return m_mouseButtonStates[buttonNumber];
 		}
 
-		Vector2D* getMousePosition(){
+		Vector2D getMousePosition(){
 			return m_mousePosition;
 		}
 
@@ -58,7 +58,7 @@ class InputHandler{
 		const int m_joystickDeadZone = 10000;
 		const Uint8* m_keystates;
 
-		Vector2D* m_mousePosition;
+		Vector2D m_mousePosition;
 		std::vector<bool> m_mouseButtonStates;
 		std::vector<std::vector<bool>> m_buttonStates;
 		std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
