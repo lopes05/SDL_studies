@@ -14,6 +14,8 @@ private:
 	void parseTilesets(TiXmlElement* pTileSetRoot, std::vector<Tileset> *pTileSets);
 	void parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers,
 		const std::vector<Tileset> *pTileSets);
+	void parseTextures(TiXmlElement* pTextureRoot);
+	void parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers);
 
 	int m_tileSize;
 	int m_width;
