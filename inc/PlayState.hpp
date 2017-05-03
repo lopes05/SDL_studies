@@ -3,6 +3,7 @@
 
 #include <GameState.hpp>
 #include <SDLGameObject.hpp>
+#include <LevelParser.hpp>
 
 class PlayState : public GameState{
 	public:

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" source="assets/blocks1.tsx"/>
+ <layer name="Tile Layer 1" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4A0IAHEkkAsBcTSQCwDxLJEyI2CUUApAAD8egE/
+  </data>
+ </layer>
+</map>

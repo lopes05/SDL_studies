@@ -8,9 +8,7 @@ void GameStateMachine::pushState(GameState *pState){
 void GameStateMachine::popState(){
 	if(!m_gameStates.empty()){
 		if(m_gameStates.back()->onExit()){
-			auto tmp = m_gameStates.back();
 			m_gameStates.pop_back();
-			delete tmp;
 		}
 	}
 }

@@ -8,6 +8,7 @@
 #include <StateParser.hpp>
 
 const std::string PlayState::s_playID = "PLAY";
+Level *pLevel = NULL;
 
 void PlayState::update(){
 	if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)){
@@ -18,22 +19,28 @@ void PlayState::update(){
 		m_gameObjects[i]->update();
 	}
 
-	if(checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), 
+	if(pLevel != NULL){
+		pLevel->update();
+	}
+
+	/*if(checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), 
 			dynamic_cast<SDLGameObject*> (m_gameObjects[1]))){
 		TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
-	}
+	}*/
 }
 
 void PlayState::render(){
-	for(int i = 0; i < (int)m_gameObjects.size(); ++i){
-		m_gameObjects[i]->draw();
+
+	if(pLevel != NULL){
+		pLevel->render();
 	}
 
 }
 
 bool PlayState::onEnter(){
-	StateParser stateParser;
-	stateParser.parseState("xml/test.xml", s_playID, &m_gameObjects, &m_textureIDList);
+	
+	LevelParser levelParser;
+	pLevel = levelParser.parseLevel("assets/mapa2.tmx");
 
 	std::cout << "Entered play state\n";
 	return true;

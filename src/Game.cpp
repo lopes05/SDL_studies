@@ -9,6 +9,9 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 	if(fullscreen)
 		flags = SDL_WINDOW_FULLSCREEN;
 
+	m_gameWidth = width;
+	m_gameHeight = height;
+
 	if(SDL_Init(SDL_INIT_EVERYTHING) == 0){
 		std::cout << "Jogo iniciado com sucesso\n";
 
@@ -20,7 +23,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height,
 
 			if(m_pRenderer){
 				std::cout << "Criação do renderer OK\n";
-				SDL_SetRenderDrawColor(m_pRenderer, 255 , 0, 0, 255);
+				SDL_SetRenderDrawColor(m_pRenderer, 255 , 255, 255, 255);
 			}
 			else{
 				std::cout << "renderer init fail\n";
